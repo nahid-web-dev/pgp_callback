@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      =  env("DATABASE_URL")
+}
+
+
+
+
+model User {
+  id            Int           @id @default(autoincrement())
+  phone_number  String       @unique
+  user_code     String?       
+  password      String
+  fp_id         String
+  ip            String
+  balance       Int          @default(0)
+  turn_over     Int          @default(0)
+  invite_code   String?
+  transactions  Transaction[]
+  game_transactions GameTransaction[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+
+enum TransactionStatus {
+  pending
+  completed
+  cancelled 
+}
+
+enum TransactionType {
+  deposit
+  withdraw
+}
+
+model Transaction {
+  id        Int     @id @default(autoincrement())
+  amount    Int
+  type      TransactionType
+  trx_id    String?
+  status    TransactionStatus @default(pending)
+  user_id   Int
+  user         User    @relation(fields: [user_id], references: [id])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model GameTransaction {
+  id         Int       @id @default(autoincrement())
+  trans_id   String    @unique
+  type       String    // "BET", "WIN", "CANCEL"
+  amount     Int
+  game_code  String?
+  user_id   Int
+  user         User    @relation(fields: [user_id], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
