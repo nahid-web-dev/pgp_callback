@@ -7,6 +7,8 @@ dotenv.config();
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.use(
   cors({
     origin: "*", // you can restrict this to your domain later (e.g. "https://sleek-lifestyle.com")
@@ -17,8 +19,15 @@ app.use(
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Server is reachable.",
+  });
+});
+
 app.use("/api/callback", slotCityCallback);
 
-app.listen(4000, () => {
-  console.log("Server running on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
