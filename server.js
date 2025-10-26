@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(
   cors({
@@ -19,11 +19,22 @@ app.use(
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "Server is reachable.",
-  });
+app.get("/", async (req, res) => {
+  try {
+    // const data = await prisma.user.findUnique({
+    //   where: { phone_number: "01343032749" },
+    // });
+
+    res.json({
+      success: true,
+      message: "data",
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: "error.",
+    });
+  }
 });
 
 app.use("/api/callback", slotCityCallback);
