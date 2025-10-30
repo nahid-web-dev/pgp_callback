@@ -122,6 +122,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  status: 'status',
+  owner: 'owner',
   phone_number: 'phone_number',
   user_code: 'user_code',
   password: 'password',
@@ -137,6 +139,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.TransactionScalarFieldEnum = {
   id: 'id',
   amount: 'amount',
+  owner: 'owner',
   type: 'type',
   trx_id: 'trx_id',
   status: 'status',
@@ -150,6 +153,7 @@ exports.Prisma.GameTransactionScalarFieldEnum = {
   trans_id: 'trans_id',
   type: 'type',
   amount: 'amount',
+  owner: 'owner',
   game_code: 'game_code',
   user_id: 'user_id',
   createdAt: 'createdAt',

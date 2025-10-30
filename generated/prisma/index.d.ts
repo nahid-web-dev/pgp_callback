@@ -1138,6 +1138,8 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
+    status: string | null
+    owner: string | null
     phone_number: string | null
     user_code: string | null
     password: string | null
@@ -1152,6 +1154,8 @@ export namespace Prisma {
 
   export type UserMaxAggregateOutputType = {
     id: number | null
+    status: string | null
+    owner: string | null
     phone_number: string | null
     user_code: string | null
     password: string | null
@@ -1166,6 +1170,8 @@ export namespace Prisma {
 
   export type UserCountAggregateOutputType = {
     id: number
+    status: number
+    owner: number
     phone_number: number
     user_code: number
     password: number
@@ -1194,6 +1200,8 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
+    status?: true
+    owner?: true
     phone_number?: true
     user_code?: true
     password?: true
@@ -1208,6 +1216,8 @@ export namespace Prisma {
 
   export type UserMaxAggregateInputType = {
     id?: true
+    status?: true
+    owner?: true
     phone_number?: true
     user_code?: true
     password?: true
@@ -1222,6 +1232,8 @@ export namespace Prisma {
 
   export type UserCountAggregateInputType = {
     id?: true
+    status?: true
+    owner?: true
     phone_number?: true
     user_code?: true
     password?: true
@@ -1323,6 +1335,8 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
+    status: string
+    owner: string
     phone_number: string
     user_code: string | null
     password: string
@@ -1356,6 +1370,8 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    status?: boolean
+    owner?: boolean
     phone_number?: boolean
     user_code?: boolean
     password?: boolean
@@ -1373,6 +1389,8 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    status?: boolean
+    owner?: boolean
     phone_number?: boolean
     user_code?: boolean
     password?: boolean
@@ -1387,6 +1405,8 @@ export namespace Prisma {
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    status?: boolean
+    owner?: boolean
     phone_number?: boolean
     user_code?: boolean
     password?: boolean
@@ -1401,6 +1421,8 @@ export namespace Prisma {
 
   export type UserSelectScalar = {
     id?: boolean
+    status?: boolean
+    owner?: boolean
     phone_number?: boolean
     user_code?: boolean
     password?: boolean
@@ -1413,7 +1435,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "phone_number" | "user_code" | "password" | "fp_id" | "ip" | "balance" | "turn_over" | "invite_code" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "owner" | "phone_number" | "user_code" | "password" | "fp_id" | "ip" | "balance" | "turn_over" | "invite_code" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     transactions?: boolean | User$transactionsArgs<ExtArgs>
     game_transactions?: boolean | User$game_transactionsArgs<ExtArgs>
@@ -1430,6 +1452,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      status: string
+      owner: string
       phone_number: string
       user_code: string | null
       password: string
@@ -1866,6 +1890,8 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
+    readonly status: FieldRef<"User", 'String'>
+    readonly owner: FieldRef<"User", 'String'>
     readonly phone_number: FieldRef<"User", 'String'>
     readonly user_code: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
@@ -2357,6 +2383,7 @@ export namespace Prisma {
   export type TransactionMinAggregateOutputType = {
     id: number | null
     amount: number | null
+    owner: string | null
     type: $Enums.TransactionType | null
     trx_id: string | null
     status: $Enums.TransactionStatus | null
@@ -2368,6 +2395,7 @@ export namespace Prisma {
   export type TransactionMaxAggregateOutputType = {
     id: number | null
     amount: number | null
+    owner: string | null
     type: $Enums.TransactionType | null
     trx_id: string | null
     status: $Enums.TransactionStatus | null
@@ -2379,6 +2407,7 @@ export namespace Prisma {
   export type TransactionCountAggregateOutputType = {
     id: number
     amount: number
+    owner: number
     type: number
     trx_id: number
     status: number
@@ -2404,6 +2433,7 @@ export namespace Prisma {
   export type TransactionMinAggregateInputType = {
     id?: true
     amount?: true
+    owner?: true
     type?: true
     trx_id?: true
     status?: true
@@ -2415,6 +2445,7 @@ export namespace Prisma {
   export type TransactionMaxAggregateInputType = {
     id?: true
     amount?: true
+    owner?: true
     type?: true
     trx_id?: true
     status?: true
@@ -2426,6 +2457,7 @@ export namespace Prisma {
   export type TransactionCountAggregateInputType = {
     id?: true
     amount?: true
+    owner?: true
     type?: true
     trx_id?: true
     status?: true
@@ -2524,6 +2556,7 @@ export namespace Prisma {
   export type TransactionGroupByOutputType = {
     id: number
     amount: number
+    owner: string
     type: $Enums.TransactionType
     trx_id: string | null
     status: $Enums.TransactionStatus
@@ -2554,6 +2587,7 @@ export namespace Prisma {
   export type TransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amount?: boolean
+    owner?: boolean
     type?: boolean
     trx_id?: boolean
     status?: boolean
@@ -2566,6 +2600,7 @@ export namespace Prisma {
   export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amount?: boolean
+    owner?: boolean
     type?: boolean
     trx_id?: boolean
     status?: boolean
@@ -2578,6 +2613,7 @@ export namespace Prisma {
   export type TransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     amount?: boolean
+    owner?: boolean
     type?: boolean
     trx_id?: boolean
     status?: boolean
@@ -2590,6 +2626,7 @@ export namespace Prisma {
   export type TransactionSelectScalar = {
     id?: boolean
     amount?: boolean
+    owner?: boolean
     type?: boolean
     trx_id?: boolean
     status?: boolean
@@ -2598,7 +2635,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "type" | "trx_id" | "status" | "user_id" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "owner" | "type" | "trx_id" | "status" | "user_id" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2617,6 +2654,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       amount: number
+      owner: string
       type: $Enums.TransactionType
       trx_id: string | null
       status: $Enums.TransactionStatus
@@ -3049,6 +3087,7 @@ export namespace Prisma {
   interface TransactionFieldRefs {
     readonly id: FieldRef<"Transaction", 'Int'>
     readonly amount: FieldRef<"Transaction", 'Int'>
+    readonly owner: FieldRef<"Transaction", 'String'>
     readonly type: FieldRef<"Transaction", 'TransactionType'>
     readonly trx_id: FieldRef<"Transaction", 'String'>
     readonly status: FieldRef<"Transaction", 'TransactionStatus'>
@@ -3498,6 +3537,7 @@ export namespace Prisma {
     trans_id: string | null
     type: string | null
     amount: number | null
+    owner: string | null
     game_code: string | null
     user_id: number | null
     createdAt: Date | null
@@ -3509,6 +3549,7 @@ export namespace Prisma {
     trans_id: string | null
     type: string | null
     amount: number | null
+    owner: string | null
     game_code: string | null
     user_id: number | null
     createdAt: Date | null
@@ -3520,6 +3561,7 @@ export namespace Prisma {
     trans_id: number
     type: number
     amount: number
+    owner: number
     game_code: number
     user_id: number
     createdAt: number
@@ -3545,6 +3587,7 @@ export namespace Prisma {
     trans_id?: true
     type?: true
     amount?: true
+    owner?: true
     game_code?: true
     user_id?: true
     createdAt?: true
@@ -3556,6 +3599,7 @@ export namespace Prisma {
     trans_id?: true
     type?: true
     amount?: true
+    owner?: true
     game_code?: true
     user_id?: true
     createdAt?: true
@@ -3567,6 +3611,7 @@ export namespace Prisma {
     trans_id?: true
     type?: true
     amount?: true
+    owner?: true
     game_code?: true
     user_id?: true
     createdAt?: true
@@ -3665,6 +3710,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner: string
     game_code: string | null
     user_id: number
     createdAt: Date
@@ -3695,6 +3741,7 @@ export namespace Prisma {
     trans_id?: boolean
     type?: boolean
     amount?: boolean
+    owner?: boolean
     game_code?: boolean
     user_id?: boolean
     createdAt?: boolean
@@ -3707,6 +3754,7 @@ export namespace Prisma {
     trans_id?: boolean
     type?: boolean
     amount?: boolean
+    owner?: boolean
     game_code?: boolean
     user_id?: boolean
     createdAt?: boolean
@@ -3719,6 +3767,7 @@ export namespace Prisma {
     trans_id?: boolean
     type?: boolean
     amount?: boolean
+    owner?: boolean
     game_code?: boolean
     user_id?: boolean
     createdAt?: boolean
@@ -3731,13 +3780,14 @@ export namespace Prisma {
     trans_id?: boolean
     type?: boolean
     amount?: boolean
+    owner?: boolean
     game_code?: boolean
     user_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GameTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trans_id" | "type" | "amount" | "game_code" | "user_id" | "createdAt" | "updatedAt", ExtArgs["result"]["gameTransaction"]>
+  export type GameTransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "trans_id" | "type" | "amount" | "owner" | "game_code" | "user_id" | "createdAt" | "updatedAt", ExtArgs["result"]["gameTransaction"]>
   export type GameTransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3758,6 +3808,7 @@ export namespace Prisma {
       trans_id: string
       type: string
       amount: number
+      owner: string
       game_code: string | null
       user_id: number
       createdAt: Date
@@ -4190,6 +4241,7 @@ export namespace Prisma {
     readonly trans_id: FieldRef<"GameTransaction", 'String'>
     readonly type: FieldRef<"GameTransaction", 'String'>
     readonly amount: FieldRef<"GameTransaction", 'Int'>
+    readonly owner: FieldRef<"GameTransaction", 'String'>
     readonly game_code: FieldRef<"GameTransaction", 'String'>
     readonly user_id: FieldRef<"GameTransaction", 'Int'>
     readonly createdAt: FieldRef<"GameTransaction", 'DateTime'>
@@ -4624,6 +4676,8 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
+    status: 'status',
+    owner: 'owner',
     phone_number: 'phone_number',
     user_code: 'user_code',
     password: 'password',
@@ -4642,6 +4696,7 @@ export namespace Prisma {
   export const TransactionScalarFieldEnum: {
     id: 'id',
     amount: 'amount',
+    owner: 'owner',
     type: 'type',
     trx_id: 'trx_id',
     status: 'status',
@@ -4658,6 +4713,7 @@ export namespace Prisma {
     trans_id: 'trans_id',
     type: 'type',
     amount: 'amount',
+    owner: 'owner',
     game_code: 'game_code',
     user_id: 'user_id',
     createdAt: 'createdAt',
@@ -4788,6 +4844,8 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
+    status?: StringFilter<"User"> | string
+    owner?: StringFilter<"User"> | string
     phone_number?: StringFilter<"User"> | string
     user_code?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
@@ -4804,6 +4862,8 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
+    status?: SortOrder
+    owner?: SortOrder
     phone_number?: SortOrder
     user_code?: SortOrderInput | SortOrder
     password?: SortOrder
@@ -4824,6 +4884,8 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    status?: StringFilter<"User"> | string
+    owner?: StringFilter<"User"> | string
     user_code?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     fp_id?: StringFilter<"User"> | string
@@ -4839,6 +4901,8 @@ export namespace Prisma {
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
+    status?: SortOrder
+    owner?: SortOrder
     phone_number?: SortOrder
     user_code?: SortOrderInput | SortOrder
     password?: SortOrder
@@ -4861,6 +4925,8 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
+    status?: StringWithAggregatesFilter<"User"> | string
+    owner?: StringWithAggregatesFilter<"User"> | string
     phone_number?: StringWithAggregatesFilter<"User"> | string
     user_code?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringWithAggregatesFilter<"User"> | string
@@ -4879,6 +4945,7 @@ export namespace Prisma {
     NOT?: TransactionWhereInput | TransactionWhereInput[]
     id?: IntFilter<"Transaction"> | number
     amount?: IntFilter<"Transaction"> | number
+    owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
@@ -4891,6 +4958,7 @@ export namespace Prisma {
   export type TransactionOrderByWithRelationInput = {
     id?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -4906,6 +4974,7 @@ export namespace Prisma {
     OR?: TransactionWhereInput[]
     NOT?: TransactionWhereInput | TransactionWhereInput[]
     amount?: IntFilter<"Transaction"> | number
+    owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
@@ -4918,6 +4987,7 @@ export namespace Prisma {
   export type TransactionOrderByWithAggregationInput = {
     id?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -4937,6 +5007,7 @@ export namespace Prisma {
     NOT?: TransactionScalarWhereWithAggregatesInput | TransactionScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Transaction"> | number
     amount?: IntWithAggregatesFilter<"Transaction"> | number
+    owner?: StringWithAggregatesFilter<"Transaction"> | string
     type?: EnumTransactionTypeWithAggregatesFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusWithAggregatesFilter<"Transaction"> | $Enums.TransactionStatus
@@ -4953,6 +5024,7 @@ export namespace Prisma {
     trans_id?: StringFilter<"GameTransaction"> | string
     type?: StringFilter<"GameTransaction"> | string
     amount?: IntFilter<"GameTransaction"> | number
+    owner?: StringFilter<"GameTransaction"> | string
     game_code?: StringNullableFilter<"GameTransaction"> | string | null
     user_id?: IntFilter<"GameTransaction"> | number
     createdAt?: DateTimeFilter<"GameTransaction"> | Date | string
@@ -4965,6 +5037,7 @@ export namespace Prisma {
     trans_id?: SortOrder
     type?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     game_code?: SortOrderInput | SortOrder
     user_id?: SortOrder
     createdAt?: SortOrder
@@ -4980,6 +5053,7 @@ export namespace Prisma {
     NOT?: GameTransactionWhereInput | GameTransactionWhereInput[]
     type?: StringFilter<"GameTransaction"> | string
     amount?: IntFilter<"GameTransaction"> | number
+    owner?: StringFilter<"GameTransaction"> | string
     game_code?: StringNullableFilter<"GameTransaction"> | string | null
     user_id?: IntFilter<"GameTransaction"> | number
     createdAt?: DateTimeFilter<"GameTransaction"> | Date | string
@@ -4992,6 +5066,7 @@ export namespace Prisma {
     trans_id?: SortOrder
     type?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     game_code?: SortOrderInput | SortOrder
     user_id?: SortOrder
     createdAt?: SortOrder
@@ -5011,6 +5086,7 @@ export namespace Prisma {
     trans_id?: StringWithAggregatesFilter<"GameTransaction"> | string
     type?: StringWithAggregatesFilter<"GameTransaction"> | string
     amount?: IntWithAggregatesFilter<"GameTransaction"> | number
+    owner?: StringWithAggregatesFilter<"GameTransaction"> | string
     game_code?: StringNullableWithAggregatesFilter<"GameTransaction"> | string | null
     user_id?: IntWithAggregatesFilter<"GameTransaction"> | number
     createdAt?: DateTimeWithAggregatesFilter<"GameTransaction"> | Date | string
@@ -5018,6 +5094,8 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -5034,6 +5112,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: number
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -5049,6 +5129,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -5065,6 +5147,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -5081,6 +5165,8 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: number
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -5094,6 +5180,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -5108,6 +5196,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -5122,6 +5212,7 @@ export namespace Prisma {
 
   export type TransactionCreateInput = {
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -5133,6 +5224,7 @@ export namespace Prisma {
   export type TransactionUncheckedCreateInput = {
     id?: number
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -5143,6 +5235,7 @@ export namespace Prisma {
 
   export type TransactionUpdateInput = {
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -5154,6 +5247,7 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -5165,6 +5259,7 @@ export namespace Prisma {
   export type TransactionCreateManyInput = {
     id?: number
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -5175,6 +5270,7 @@ export namespace Prisma {
 
   export type TransactionUpdateManyMutationInput = {
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -5185,6 +5281,7 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -5197,6 +5294,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5208,6 +5306,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     user_id: number
     createdAt?: Date | string
@@ -5218,6 +5317,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5229,6 +5329,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     user_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5240,6 +5341,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     user_id: number
     createdAt?: Date | string
@@ -5250,6 +5352,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5260,6 +5363,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     user_id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5345,6 +5449,8 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    owner?: SortOrder
     phone_number?: SortOrder
     user_code?: SortOrder
     password?: SortOrder
@@ -5365,6 +5471,8 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    owner?: SortOrder
     phone_number?: SortOrder
     user_code?: SortOrder
     password?: SortOrder
@@ -5379,6 +5487,8 @@ export namespace Prisma {
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    owner?: SortOrder
     phone_number?: SortOrder
     user_code?: SortOrder
     password?: SortOrder
@@ -5485,6 +5595,7 @@ export namespace Prisma {
   export type TransactionCountOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
     status?: SortOrder
@@ -5502,6 +5613,7 @@ export namespace Prisma {
   export type TransactionMaxOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
     status?: SortOrder
@@ -5513,6 +5625,7 @@ export namespace Prisma {
   export type TransactionMinOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
     status?: SortOrder
@@ -5552,6 +5665,7 @@ export namespace Prisma {
     trans_id?: SortOrder
     type?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     game_code?: SortOrder
     user_id?: SortOrder
     createdAt?: SortOrder
@@ -5569,6 +5683,7 @@ export namespace Prisma {
     trans_id?: SortOrder
     type?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     game_code?: SortOrder
     user_id?: SortOrder
     createdAt?: SortOrder
@@ -5580,6 +5695,7 @@ export namespace Prisma {
     trans_id?: SortOrder
     type?: SortOrder
     amount?: SortOrder
+    owner?: SortOrder
     game_code?: SortOrder
     user_id?: SortOrder
     createdAt?: SortOrder
@@ -5904,6 +6020,7 @@ export namespace Prisma {
 
   export type TransactionCreateWithoutUserInput = {
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -5914,6 +6031,7 @@ export namespace Prisma {
   export type TransactionUncheckedCreateWithoutUserInput = {
     id?: number
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -5935,6 +6053,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5945,6 +6064,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5982,6 +6102,7 @@ export namespace Prisma {
     NOT?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
     id?: IntFilter<"Transaction"> | number
     amount?: IntFilter<"Transaction"> | number
+    owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
@@ -6014,6 +6135,7 @@ export namespace Prisma {
     trans_id?: StringFilter<"GameTransaction"> | string
     type?: StringFilter<"GameTransaction"> | string
     amount?: IntFilter<"GameTransaction"> | number
+    owner?: StringFilter<"GameTransaction"> | string
     game_code?: StringNullableFilter<"GameTransaction"> | string | null
     user_id?: IntFilter<"GameTransaction"> | number
     createdAt?: DateTimeFilter<"GameTransaction"> | Date | string
@@ -6021,6 +6143,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutTransactionsInput = {
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -6036,6 +6160,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutTransactionsInput = {
     id?: number
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -6066,6 +6192,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutTransactionsInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -6081,6 +6209,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutTransactionsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -6095,6 +6225,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutGame_transactionsInput = {
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -6110,6 +6242,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutGame_transactionsInput = {
     id?: number
+    status?: string
+    owner?: string
     phone_number: string
     user_code?: string | null
     password: string
@@ -6140,6 +6274,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutGame_transactionsInput = {
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -6155,6 +6291,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutGame_transactionsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    owner?: StringFieldUpdateOperationsInput | string
     phone_number?: StringFieldUpdateOperationsInput | string
     user_code?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
@@ -6171,6 +6309,7 @@ export namespace Prisma {
   export type TransactionCreateManyUserInput = {
     id?: number
     amount: number
+    owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
     status?: $Enums.TransactionStatus
@@ -6183,6 +6322,7 @@ export namespace Prisma {
     trans_id: string
     type: string
     amount: number
+    owner?: string
     game_code?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6190,6 +6330,7 @@ export namespace Prisma {
 
   export type TransactionUpdateWithoutUserInput = {
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -6200,6 +6341,7 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -6210,6 +6352,7 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
@@ -6221,6 +6364,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6231,6 +6375,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6241,6 +6386,7 @@ export namespace Prisma {
     trans_id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
+    owner?: StringFieldUpdateOperationsInput | string
     game_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

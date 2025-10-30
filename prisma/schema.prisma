@@ -17,9 +17,10 @@ datasource db {
 
 
 
-
 model User {
   id            Int           @id @default(autoincrement())
+  status        String        @default("Active") 
+  owner         String        @default("nahid")
   phone_number  String       @unique
   user_code     String?       
   password      String
@@ -49,6 +50,7 @@ enum TransactionType {
 model Transaction {
   id        Int     @id @default(autoincrement())
   amount    Int
+  owner     String     @default("nahid")
   type      TransactionType
   trx_id    String?
   status    TransactionStatus @default(pending)
@@ -63,6 +65,7 @@ model GameTransaction {
   trans_id   String    @unique
   type       String    // "BET", "WIN", "CANCEL"
   amount     Int
+  owner      String     @default("nahid")
   game_code  String?
   user_id   Int
   user         User    @relation(fields: [user_id], references: [id])

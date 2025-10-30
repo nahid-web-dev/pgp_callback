@@ -6,15 +6,18 @@ const CALLBACK_TOKEN = process.env.SLOT_CITY_CALLBACK_TOKEN;
 
 // POST callback route
 router.post("/", async (req, res) => {
-  const token = req.headers["callback-token"];
-  if (token !== CALLBACK_TOKEN) {
-    return res.json({ result: 100, status: "ERROR" });
-  }
-
-  const { command, data, check } = req.body;
-  const checks = check.split(",");
-
   try {
+    const ip = req.headers["x-forwarded-for"];
+    console.log("ip", ip);
+
+    const token = req.headers["callback-token"];
+    if (token !== CALLBACK_TOKEN) {
+      return res.json({ result: 100, status: "ERROR" });
+    }
+
+    const { command, data, check } = req.body;
+    const checks = check.split(",");
+
     const [user, betRecord] = await Promise.all([
       prisma.user.findUnique({ where: { phone_number: data.account } }),
       prisma.gameTransaction.findUnique({
