@@ -142,8 +142,10 @@ exports.Prisma.TransactionScalarFieldEnum = {
   owner: 'owner',
   type: 'type',
   trx_id: 'trx_id',
+  sign: 'sign',
   status: 'status',
   user_id: 'user_id',
+  method: 'method',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

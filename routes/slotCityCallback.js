@@ -8,7 +8,6 @@ const CALLBACK_TOKEN = process.env.SLOT_CITY_CALLBACK_TOKEN;
 router.post("/", async (req, res) => {
   try {
     const ip = req.headers["x-forwarded-for"];
-    console.log("ip", ip);
 
     const token = req.headers["callback-token"];
     if (token !== CALLBACK_TOKEN) {

@@ -2386,8 +2386,10 @@ export namespace Prisma {
     owner: string | null
     type: $Enums.TransactionType | null
     trx_id: string | null
+    sign: string | null
     status: $Enums.TransactionStatus | null
     user_id: number | null
+    method: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2398,8 +2400,10 @@ export namespace Prisma {
     owner: string | null
     type: $Enums.TransactionType | null
     trx_id: string | null
+    sign: string | null
     status: $Enums.TransactionStatus | null
     user_id: number | null
+    method: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2410,8 +2414,10 @@ export namespace Prisma {
     owner: number
     type: number
     trx_id: number
+    sign: number
     status: number
     user_id: number
+    method: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2436,8 +2442,10 @@ export namespace Prisma {
     owner?: true
     type?: true
     trx_id?: true
+    sign?: true
     status?: true
     user_id?: true
+    method?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2448,8 +2456,10 @@ export namespace Prisma {
     owner?: true
     type?: true
     trx_id?: true
+    sign?: true
     status?: true
     user_id?: true
+    method?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2460,8 +2470,10 @@ export namespace Prisma {
     owner?: true
     type?: true
     trx_id?: true
+    sign?: true
     status?: true
     user_id?: true
+    method?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2559,8 +2571,10 @@ export namespace Prisma {
     owner: string
     type: $Enums.TransactionType
     trx_id: string | null
+    sign: string | null
     status: $Enums.TransactionStatus
     user_id: number
+    method: string | null
     createdAt: Date
     updatedAt: Date
     _count: TransactionCountAggregateOutputType | null
@@ -2590,8 +2604,10 @@ export namespace Prisma {
     owner?: boolean
     type?: boolean
     trx_id?: boolean
+    sign?: boolean
     status?: boolean
     user_id?: boolean
+    method?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2603,8 +2619,10 @@ export namespace Prisma {
     owner?: boolean
     type?: boolean
     trx_id?: boolean
+    sign?: boolean
     status?: boolean
     user_id?: boolean
+    method?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2616,8 +2634,10 @@ export namespace Prisma {
     owner?: boolean
     type?: boolean
     trx_id?: boolean
+    sign?: boolean
     status?: boolean
     user_id?: boolean
+    method?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2629,13 +2649,15 @@ export namespace Prisma {
     owner?: boolean
     type?: boolean
     trx_id?: boolean
+    sign?: boolean
     status?: boolean
     user_id?: boolean
+    method?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "owner" | "type" | "trx_id" | "status" | "user_id" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "owner" | "type" | "trx_id" | "sign" | "status" | "user_id" | "method" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2657,8 +2679,10 @@ export namespace Prisma {
       owner: string
       type: $Enums.TransactionType
       trx_id: string | null
+      sign: string | null
       status: $Enums.TransactionStatus
       user_id: number
+      method: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["transaction"]>
@@ -3090,8 +3114,10 @@ export namespace Prisma {
     readonly owner: FieldRef<"Transaction", 'String'>
     readonly type: FieldRef<"Transaction", 'TransactionType'>
     readonly trx_id: FieldRef<"Transaction", 'String'>
+    readonly sign: FieldRef<"Transaction", 'String'>
     readonly status: FieldRef<"Transaction", 'TransactionStatus'>
     readonly user_id: FieldRef<"Transaction", 'Int'>
+    readonly method: FieldRef<"Transaction", 'String'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
     readonly updatedAt: FieldRef<"Transaction", 'DateTime'>
   }
@@ -4699,8 +4725,10 @@ export namespace Prisma {
     owner: 'owner',
     type: 'type',
     trx_id: 'trx_id',
+    sign: 'sign',
     status: 'status',
     user_id: 'user_id',
+    method: 'method',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4948,8 +4976,10 @@ export namespace Prisma {
     owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
+    sign?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     user_id?: IntFilter<"Transaction"> | number
+    method?: StringNullableFilter<"Transaction"> | string | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4961,8 +4991,10 @@ export namespace Prisma {
     owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrderInput | SortOrder
+    sign?: SortOrderInput | SortOrder
     status?: SortOrder
     user_id?: SortOrder
+    method?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -4977,8 +5009,10 @@ export namespace Prisma {
     owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
+    sign?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     user_id?: IntFilter<"Transaction"> | number
+    method?: StringNullableFilter<"Transaction"> | string | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4990,8 +5024,10 @@ export namespace Prisma {
     owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrderInput | SortOrder
+    sign?: SortOrderInput | SortOrder
     status?: SortOrder
     user_id?: SortOrder
+    method?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
@@ -5010,8 +5046,10 @@ export namespace Prisma {
     owner?: StringWithAggregatesFilter<"Transaction"> | string
     type?: EnumTransactionTypeWithAggregatesFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
+    sign?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusWithAggregatesFilter<"Transaction"> | $Enums.TransactionStatus
     user_id?: IntWithAggregatesFilter<"Transaction"> | number
+    method?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
@@ -5215,7 +5253,9 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTransactionsInput
@@ -5227,8 +5267,10 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
     user_id: number
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5238,7 +5280,9 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
@@ -5250,8 +5294,10 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     user_id?: IntFieldUpdateOperationsInput | number
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5262,8 +5308,10 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
     user_id: number
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5273,7 +5321,9 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5284,8 +5334,10 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     user_id?: IntFieldUpdateOperationsInput | number
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5598,8 +5650,10 @@ export namespace Prisma {
     owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
+    sign?: SortOrder
     status?: SortOrder
     user_id?: SortOrder
+    method?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5616,8 +5670,10 @@ export namespace Prisma {
     owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
+    sign?: SortOrder
     status?: SortOrder
     user_id?: SortOrder
+    method?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5628,8 +5684,10 @@ export namespace Prisma {
     owner?: SortOrder
     type?: SortOrder
     trx_id?: SortOrder
+    sign?: SortOrder
     status?: SortOrder
     user_id?: SortOrder
+    method?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6023,7 +6081,9 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6034,7 +6094,9 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6105,8 +6167,10 @@ export namespace Prisma {
     owner?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
     trx_id?: StringNullableFilter<"Transaction"> | string | null
+    sign?: StringNullableFilter<"Transaction"> | string | null
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     user_id?: IntFilter<"Transaction"> | number
+    method?: StringNullableFilter<"Transaction"> | string | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
   }
@@ -6312,7 +6376,9 @@ export namespace Prisma {
     owner?: string
     type: $Enums.TransactionType
     trx_id?: string | null
+    sign?: string | null
     status?: $Enums.TransactionStatus
+    method?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6333,7 +6399,9 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6344,7 +6412,9 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6355,7 +6425,9 @@ export namespace Prisma {
     owner?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
     trx_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sign?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
+    method?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

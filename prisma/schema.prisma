@@ -53,8 +53,10 @@ model Transaction {
   owner     String     @default("nahid")
   type      TransactionType
   trx_id    String?
+  sign      String?
   status    TransactionStatus @default(pending)
   user_id   Int
+  method    String?
   user         User    @relation(fields: [user_id], references: [id])
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
@@ -67,9 +69,11 @@ model GameTransaction {
   amount     Int
   owner      String     @default("nahid")
   game_code  String?
-  user_id   Int
+  user_id    Int
   user         User    @relation(fields: [user_id], references: [id])
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }
+
+
 
