@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const COOKIE_NAME = "auth_token";
 
 export function authMiddleware(req, res, next) {
   try {

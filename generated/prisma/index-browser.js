@@ -162,6 +162,15 @@ exports.Prisma.GameTransactionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  sender: 'sender',
+  receiver: 'receiver',
+  content: 'content',
+  fileUrl: 'fileUrl',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -190,7 +199,8 @@ exports.TransactionStatus = exports.$Enums.TransactionStatus = {
 exports.Prisma.ModelName = {
   User: 'User',
   Transaction: 'Transaction',
-  GameTransaction: 'GameTransaction'
+  GameTransaction: 'GameTransaction',
+  Message: 'Message'
 };
 
 /**

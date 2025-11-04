@@ -2,11 +2,11 @@ import express from "express";
 import { prisma } from "../lib/prisma.js";
 
 const router = express.Router();
-const CALLBACK_TOKEN = process.env.SLOT_CITY_CALLBACK_TOKEN;
 
 // POST callback route
 router.post("/", async (req, res) => {
   try {
+    const CALLBACK_TOKEN = process.env.SLOT_CITY_CALLBACK_TOKEN;
     const ip = req.headers["x-forwarded-for"];
 
     const token = req.headers["callback-token"];
@@ -93,7 +93,10 @@ router.post("/", async (req, res) => {
           }),
           prisma.user.update({
             where: { id: user.id },
-            data: { balance: { decrement: data.amount } },
+            data: {
+              balance: { decrement: data.amount },
+              turn_over: { decrement: data.amount },
+            },
           }),
         ]);
 

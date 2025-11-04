@@ -17,6 +17,7 @@ datasource db {
 
 
 
+
 model User {
   id            Int           @id @default(autoincrement())
   status        String        @default("Active") 
@@ -57,7 +58,7 @@ model Transaction {
   status    TransactionStatus @default(pending)
   user_id   Int
   method    String?
-  user         User    @relation(fields: [user_id], references: [id])
+  user         User          @relation(fields: [user_id], references: [id])
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 }
@@ -70,10 +71,17 @@ model GameTransaction {
   owner      String     @default("nahid")
   game_code  String?
   user_id    Int
-  user         User    @relation(fields: [user_id], references: [id])
+  user       User    @relation(fields: [user_id], references: [id])
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }
 
-
+model Message {
+  id        Int      @id @default(autoincrement())
+  sender    String
+  receiver  String
+  content   String?
+  fileUrl   String?
+  createdAt DateTime @default(now())
+}
 

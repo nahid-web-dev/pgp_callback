@@ -71,7 +71,7 @@ OkpayPayOutRouter.post("/", async (req, res) => {
     const params = {
       mchId: OKPAY_MERCHANT_ID,
       currency: "BDT",
-      out_trade_no: String(trx.id + 98989898),
+      out_trade_no: String(trx.id),
       pay_type,
       account,
       userName,

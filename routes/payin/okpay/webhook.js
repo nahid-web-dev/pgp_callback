@@ -52,6 +52,18 @@ OkpayPayInWebhookRouter.post(
       const [userId, transactionId] = body.attach.split("_").map(Number);
 
       if (body?.status === "1") {
+        const depositCount = await prisma.transaction.count({
+          where: {
+            user_id: userId,
+            type: "deposit",
+          },
+        });
+
+        const calculatedAmount =
+          depositCount <= 3
+            ? Number(body.pay_money) * 2
+            : Number(body.pay_money);
+
         await prisma.$transaction([
           prisma.transaction.update({
             where: { id: transactionId },
@@ -59,7 +71,10 @@ OkpayPayInWebhookRouter.post(
           }),
           prisma.user.update({
             where: { id: userId },
-            data: { balance: { increment: Number(body.pay_money) } },
+            data: {
+              balance: { increment: calculatedAmount },
+              turn_over: { increment: calculatedAmount },
+            },
           }),
         ]);
       } else if (body?.status === "2") {
