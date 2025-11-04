@@ -8,7 +8,6 @@ import OkpayPayInWebhookRouter from "./routes/payin/okpay/webhook.js";
 import OkpayPayOutRouter from "./routes/payout/okpay/route.js";
 import OkpayPayOutWebhookRouter from "./routes/payout/okpay/webhook.js";
 import cookieParser from "cookie-parser";
-import { authMiddleware } from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -59,12 +58,12 @@ app.use("/api/callback", slotCityCallback);
 
 // Payin routes
 
-app.use("/api/create-payin/okpay", authMiddleware, OkpayPayInRouter);
+app.use("/api/create-payin/okpay", OkpayPayInRouter);
 app.use("api/create-payin/okpay/webhook", OkpayPayInWebhookRouter);
 
 // Payout routes
 
-app.use("/api/create-payout/okpay", authMiddleware, OkpayPayOutRouter);
+app.use("/api/create-payout/okpay", OkpayPayOutRouter);
 app.use("/api/create-payout/okpay/webhook", OkpayPayOutWebhookRouter);
 
 app.listen(PORT, () => {

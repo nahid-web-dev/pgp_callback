@@ -3,6 +3,7 @@ import axios from "axios";
 import qs from "qs";
 import crypto from "crypto";
 import { prisma } from "../../../lib/prisma.js";
+import jwt from "jsonwebtoken";
 
 const OkpayPayOutRouter = express.Router();
 
@@ -30,9 +31,8 @@ OkpayPayOutRouter.post("/", async (req, res) => {
     const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
     const OKPAY_API_URL = process.env.OKPAY_API_URL;
 
-    const { userId } = req.user;
-
-    const { pay_type, money, account, userName } = req.body;
+    const { pay_type, money, account, userName, token } = req.body;
+    const { userId } = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!pay_type || !money || !account || !userName || !userId) {
       return res
