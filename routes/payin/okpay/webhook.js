@@ -61,8 +61,17 @@ OkpayPayInWebhookRouter.post(
 
         const calculatedAmount =
           depositCount <= 3
-            ? Number(body.pay_money) * 2
+            ? Number(body.pay_money) * 1.5
             : Number(body.pay_money);
+
+        const calculatedAmountForReferer =
+          depositCount <= 3 ? Number(body.pay_money) * 0.4 : 0;
+
+        const fetchedUser = await prisma.user.findFirst({
+          where: {
+            id: userId,
+          },
+        });
 
         await prisma.$transaction([
           prisma.transaction.update({
@@ -74,6 +83,13 @@ OkpayPayInWebhookRouter.post(
             data: {
               balance: { increment: calculatedAmount },
               turn_over: { increment: calculatedAmount },
+            },
+          }),
+          prisma.user.update({
+            where: { phone_number: fetchedUser.invite_code },
+            data: {
+              balance: { increment: calculatedAmountForReferer },
+              turn_over: { increment: calculatedAmountForReferer },
             },
           }),
         ]);
