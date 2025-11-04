@@ -4,9 +4,6 @@ import { prisma } from "../../../lib/prisma.js";
 
 const OkpayPayInWebhookRouter = express.Router();
 
-const OKPAY_API_KEY = process.env.OKPAY_API_KEY;
-const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
-
 // Function to verify OKPay sign
 function verifySign(body, apiKey) {
   const filtered = Object.keys(body)
@@ -31,6 +28,9 @@ OkpayPayInWebhookRouter.post(
   express.text({ type: "*/*" }),
   async (req, res) => {
     try {
+      const OKPAY_API_KEY = process.env.OKPAY_API_KEY;
+      const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
+
       const params = new URLSearchParams(req.body);
       const body = Object.fromEntries(params);
       console.log("Webhook body:", body);

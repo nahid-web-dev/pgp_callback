@@ -6,10 +6,6 @@ import { prisma } from "../../../lib/prisma.js";
 
 const OkpayPayInRouter = express.Router();
 
-const OKPAY_API_KEY = process.env.OKPAY_API_KEY;
-const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
-const OKPAY_API_URL = process.env.OKPAY_API_URL;
-
 function generateSign(params, apiKey) {
   const filtered = Object.keys(params)
     .filter((k) => params[k] !== "" && params[k] !== undefined && k !== "sign")
@@ -31,6 +27,9 @@ function generateSign(params, apiKey) {
 
 OkpayPayInRouter.post("/", async (req, res) => {
   try {
+    const OKPAY_API_KEY = process.env.OKPAY_API_KEY;
+    const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
+    const OKPAY_API_URL = process.env.OKPAY_API_URL;
     const { userId } = req.user;
 
     const { pay_type, money } = req.body;
