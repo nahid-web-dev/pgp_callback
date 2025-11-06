@@ -50,7 +50,9 @@ OkpayPayOutRouter.post("/", async (req, res) => {
         .status(400)
         .json({ success: false, message: "Insufficient balance" });
     }
-
+    if (Number(user.turn_over) != 0) {
+      return res.status(400).json({success: false, message: "Turn Over incomplete!"});
+    }
     const [trx] = await prisma.$transaction([
       prisma.transaction.create({
         data: {

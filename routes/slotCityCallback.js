@@ -92,12 +92,14 @@ router.post("/", async (req, res) => {
             },
           }),
           prisma.user.update({
-            where: { id: user.id },
-            data: {
-              balance: { decrement: data.amount },
-              turn_over: { decrement: data.amount },
-            },
-          }),
+      where: { id: user.id },
+      data: {
+        balance: { decrement: data.amount },
+        turn_over: {
+          set: Math.max(user.turn_over - data.amount, 0), // ✅ prevents negative
+        },
+      },
+    	  }),
         ]);
 
         return res.json({

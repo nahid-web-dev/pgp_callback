@@ -33,7 +33,7 @@ OkpayPayInRouter.post("/", async (req, res) => {
     const OKPAY_API_URL = process.env.OKPAY_API_URL;
 
     const { pay_type, money, token } = req.body;
-
+    console.log("token",token, process.env.JWT_SECRET)
     const { userId } = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!pay_type || !money || !userId) {
@@ -61,7 +61,7 @@ OkpayPayInRouter.post("/", async (req, res) => {
       money: String(money),
       attach: attachString,
       notify_url: `${process.env.BASE_URL}/api/create-payin/okpay/webhook`,
-      returnUrl: `${process.env.BASE_URL}/wallet`,
+      returnUrl: `https://pgpwin.site/wallet`,
     };
 
     const sign = generateSign(params, OKPAY_API_KEY);

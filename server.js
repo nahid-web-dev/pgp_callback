@@ -59,7 +59,7 @@ app.use("/api/callback", slotCityCallback);
 // Payin routes
 
 app.use("/api/create-payin/okpay", OkpayPayInRouter);
-app.use("api/create-payin/okpay/webhook", OkpayPayInWebhookRouter);
+app.use("/api/create-payin/okpay/webhook", OkpayPayInWebhookRouter);
 
 // Payout routes
 
