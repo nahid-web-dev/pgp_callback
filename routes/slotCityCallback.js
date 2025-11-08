@@ -38,11 +38,11 @@ router.post("/", async (req, res) => {
           break;
 
         case 31: // balance check
-          if (user.balance < data.amount)
+          if (Number(user.balance) < Number(data.amount))
             return res.json({
               result: 31,
               status: "ERROR",
-              data: { balance: user.balance },
+              data: { balance: Number(user.balance) },
             });
           break;
 
@@ -52,13 +52,13 @@ router.post("/", async (req, res) => {
             return res.json({
               result: 41,
               status: "ERROR",
-              data: { balance: user.balance },
+              data: { balance: Number(user.balance) },
             });
           if (num === 42 && !betRecord)
             return res.json({
               result: 42,
               status: "ERROR",
-              data: { balance: user.balance },
+              data: { balance: Number(user.balance) },
             });
           break;
       }
@@ -70,14 +70,14 @@ router.post("/", async (req, res) => {
         return res.json({
           result: 0,
           status: "OK",
-          data: { account: user.id, balance: user.balance },
+          data: { account: user.id, balance: Number(user.balance) },
         });
 
       case "balance":
         return res.json({
           result: 0,
           status: "OK",
-          data: { balance: user.balance },
+          data: { balance: Number(user.balance) },
         });
 
       case "bet":
@@ -92,20 +92,21 @@ router.post("/", async (req, res) => {
             },
           }),
           prisma.user.update({
-      where: { id: user.id },
-      data: {
-        balance: { decrement: data.amount },
-        turn_over: {
-          set: Math.max(user.turn_over - data.amount, 0), // ✅ prevents negative
-        },
-      },
-    	  }),
+            where: { id: user.id },
+            data: {
+              balance: { decrement: data.amount },
+              turn_over: {
+                set: Math.max(user.turn_over - Number(data.amount), 0),
+                // ✅ prevents negative
+              },
+            },
+          }),
         ]);
 
         return res.json({
           result: 0,
           status: "OK",
-          data: { balance: user.balance - data.amount },
+          data: { balance: Number(user.balance) - Number(data.amount) },
         });
 
       case "win":
@@ -128,7 +129,7 @@ router.post("/", async (req, res) => {
         return res.json({
           result: 0,
           status: "OK",
-          data: { balance: user.balance + data.amount },
+          data: { balance: Number(user.balance) + data.amount },
         });
 
       case "cancel":
@@ -140,7 +141,7 @@ router.post("/", async (req, res) => {
         return res.json({
           result: 0,
           status: "OK",
-          data: { balance: user.balance },
+          data: { balance: Number(user.balance) },
         });
 
       case "status":

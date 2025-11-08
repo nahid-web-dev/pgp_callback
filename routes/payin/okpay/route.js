@@ -32,8 +32,7 @@ OkpayPayInRouter.post("/", async (req, res) => {
     const OKPAY_MERCHANT_ID = process.env.OKPAY_MERCHANT_ID;
     const OKPAY_API_URL = process.env.OKPAY_API_URL;
 
-    const { pay_type, money, token } = req.body;
-    console.log("token",token, process.env.JWT_SECRET)
+    const { pay_type, money, token, returnUrl } = req.body;
     const { userId } = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!pay_type || !money || !userId) {
@@ -61,7 +60,7 @@ OkpayPayInRouter.post("/", async (req, res) => {
       money: String(money),
       attach: attachString,
       notify_url: `${process.env.BASE_URL}/api/create-payin/okpay/webhook`,
-      returnUrl: `https://pgpwin.site/wallet`,
+      returnUrl: returnUrl,
     };
 
     const sign = generateSign(params, OKPAY_API_KEY);
@@ -71,18 +70,24 @@ OkpayPayInRouter.post("/", async (req, res) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     });
 
-    await prisma.transaction.update({
-      where: { id: transactionData.id },
-      data: { sign },
-    });
-
     if (response.data.code === 0) {
+      await prisma.transaction.update({
+        where: { id: transactionData.id },
+        data: { sign, trx_id: response.data.data?.transaction_Id || "" },
+      });
       return res.json({
         success: true,
         message: response.data.message || "Payin created successfully",
         url: response.data.data?.url,
       });
     }
+
+    await prisma.transaction.update({
+      where: { id: transactionData.id },
+      data: { sign, trx_id: response.data?.data?.transaction_Id || "" },
+    });
+
+    console.log(response.data);
 
     res.json({
       success: false,

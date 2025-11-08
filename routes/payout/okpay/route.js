@@ -51,7 +51,9 @@ OkpayPayOutRouter.post("/", async (req, res) => {
         .json({ success: false, message: "Insufficient balance" });
     }
     if (Number(user.turn_over) != 0) {
-      return res.status(400).json({success: false, message: "Turn Over incomplete!"});
+      return res
+        .status(400)
+        .json({ success: false, message: "Turn Over incomplete!" });
     }
     const [trx] = await prisma.$transaction([
       prisma.transaction.create({
@@ -93,15 +95,17 @@ OkpayPayOutRouter.post("/", async (req, res) => {
       await prisma.transaction.update({
         where: { id: trx.id },
         data: {
-          trx_id: String(
-            response.data?.data?.transaction_Id ||
-              response.data?.data?.transaction_id ||
-              trx.id
-          ),
+          trx_id: String(response.data?.data?.transaction_Id || ""),
         },
       });
       return res.json({ success: true, data: response.data });
     }
+    await prisma.transaction.update({
+      where: { id: trx.id },
+      data: {
+        trx_id: String(response.data?.data?.transaction_Id || ""),
+      },
+    });
 
     res.status(400).json({ success: false, data: response.data });
   } catch (error) {

@@ -60,9 +60,6 @@ OkpayPayOutWebhookRouter.post(
             where: { id: trxId },
             data: {
               status: "completed",
-              trx_id: String(
-                body.transaction_Id || body.transaction_id || body.transactionId
-              ),
             },
           });
         }

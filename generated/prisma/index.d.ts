@@ -1217,13 +1217,13 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
-    balance: number | null
+    balance: Decimal | null
     turn_over: number | null
   }
 
   export type UserSumAggregateOutputType = {
     id: number | null
-    balance: number | null
+    balance: Decimal | null
     turn_over: number | null
   }
 
@@ -1236,7 +1236,7 @@ export namespace Prisma {
     password: string | null
     fp_id: string | null
     ip: string | null
-    balance: number | null
+    balance: Decimal | null
     turn_over: number | null
     invite_code: string | null
     createdAt: Date | null
@@ -1252,7 +1252,7 @@ export namespace Prisma {
     password: string | null
     fp_id: string | null
     ip: string | null
-    balance: number | null
+    balance: Decimal | null
     turn_over: number | null
     invite_code: string | null
     createdAt: Date | null
@@ -1433,7 +1433,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance: number
+    balance: Decimal
     turn_over: number
     invite_code: string | null
     createdAt: Date
@@ -1550,7 +1550,7 @@ export namespace Prisma {
       password: string
       fp_id: string
       ip: string
-      balance: number
+      balance: Prisma.Decimal
       turn_over: number
       invite_code: string | null
       createdAt: Date
@@ -1988,7 +1988,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly fp_id: FieldRef<"User", 'String'>
     readonly ip: FieldRef<"User", 'String'>
-    readonly balance: FieldRef<"User", 'Int'>
+    readonly balance: FieldRef<"User", 'Decimal'>
     readonly turn_over: FieldRef<"User", 'Int'>
     readonly invite_code: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -4803,6 +4803,7 @@ export namespace Prisma {
     receiver: string | null
     content: string | null
     fileUrl: string | null
+    seen: boolean | null
     createdAt: Date | null
   }
 
@@ -4812,6 +4813,7 @@ export namespace Prisma {
     receiver: string | null
     content: string | null
     fileUrl: string | null
+    seen: boolean | null
     createdAt: Date | null
   }
 
@@ -4821,6 +4823,7 @@ export namespace Prisma {
     receiver: number
     content: number
     fileUrl: number
+    seen: number
     createdAt: number
     _all: number
   }
@@ -4840,6 +4843,7 @@ export namespace Prisma {
     receiver?: true
     content?: true
     fileUrl?: true
+    seen?: true
     createdAt?: true
   }
 
@@ -4849,6 +4853,7 @@ export namespace Prisma {
     receiver?: true
     content?: true
     fileUrl?: true
+    seen?: true
     createdAt?: true
   }
 
@@ -4858,6 +4863,7 @@ export namespace Prisma {
     receiver?: true
     content?: true
     fileUrl?: true
+    seen?: true
     createdAt?: true
     _all?: true
   }
@@ -4954,6 +4960,7 @@ export namespace Prisma {
     receiver: string
     content: string | null
     fileUrl: string | null
+    seen: boolean
     createdAt: Date
     _count: MessageCountAggregateOutputType | null
     _avg: MessageAvgAggregateOutputType | null
@@ -4982,6 +4989,7 @@ export namespace Prisma {
     receiver?: boolean
     content?: boolean
     fileUrl?: boolean
+    seen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["message"]>
 
@@ -4991,6 +4999,7 @@ export namespace Prisma {
     receiver?: boolean
     content?: boolean
     fileUrl?: boolean
+    seen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["message"]>
 
@@ -5000,6 +5009,7 @@ export namespace Prisma {
     receiver?: boolean
     content?: boolean
     fileUrl?: boolean
+    seen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["message"]>
 
@@ -5009,10 +5019,11 @@ export namespace Prisma {
     receiver?: boolean
     content?: boolean
     fileUrl?: boolean
+    seen?: boolean
     createdAt?: boolean
   }
 
-  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sender" | "receiver" | "content" | "fileUrl" | "createdAt", ExtArgs["result"]["message"]>
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sender" | "receiver" | "content" | "fileUrl" | "seen" | "createdAt", ExtArgs["result"]["message"]>
 
   export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Message"
@@ -5023,6 +5034,7 @@ export namespace Prisma {
       receiver: string
       content: string | null
       fileUrl: string | null
+      seen: boolean
       createdAt: Date
     }, ExtArgs["result"]["message"]>
     composites: {}
@@ -5452,6 +5464,7 @@ export namespace Prisma {
     readonly receiver: FieldRef<"Message", 'String'>
     readonly content: FieldRef<"Message", 'String'>
     readonly fileUrl: FieldRef<"Message", 'String'>
+    readonly seen: FieldRef<"Message", 'Boolean'>
     readonly createdAt: FieldRef<"Message", 'DateTime'>
   }
     
@@ -5890,6 +5903,7 @@ export namespace Prisma {
     receiver: 'receiver',
     content: 'content',
     fileUrl: 'fileUrl',
+    seen: 'seen',
     createdAt: 'createdAt'
   };
 
@@ -5954,6 +5968,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -5996,6 +6024,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6024,7 +6059,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     fp_id?: StringFilter<"User"> | string
     ip?: StringFilter<"User"> | string
-    balance?: IntFilter<"User"> | number
+    balance?: DecimalFilter<"User"> | Decimal | DecimalJsLike | number | string
     turn_over?: IntFilter<"User"> | number
     invite_code?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -6063,7 +6098,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     fp_id?: StringFilter<"User"> | string
     ip?: StringFilter<"User"> | string
-    balance?: IntFilter<"User"> | number
+    balance?: DecimalFilter<"User"> | Decimal | DecimalJsLike | number | string
     turn_over?: IntFilter<"User"> | number
     invite_code?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -6105,7 +6140,7 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     fp_id?: StringWithAggregatesFilter<"User"> | string
     ip?: StringWithAggregatesFilter<"User"> | string
-    balance?: IntWithAggregatesFilter<"User"> | number
+    balance?: DecimalWithAggregatesFilter<"User"> | Decimal | DecimalJsLike | number | string
     turn_over?: IntWithAggregatesFilter<"User"> | number
     invite_code?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -6285,6 +6320,7 @@ export namespace Prisma {
     receiver?: StringFilter<"Message"> | string
     content?: StringNullableFilter<"Message"> | string | null
     fileUrl?: StringNullableFilter<"Message"> | string | null
+    seen?: BoolFilter<"Message"> | boolean
     createdAt?: DateTimeFilter<"Message"> | Date | string
   }
 
@@ -6294,6 +6330,7 @@ export namespace Prisma {
     receiver?: SortOrder
     content?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
+    seen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -6306,6 +6343,7 @@ export namespace Prisma {
     receiver?: StringFilter<"Message"> | string
     content?: StringNullableFilter<"Message"> | string | null
     fileUrl?: StringNullableFilter<"Message"> | string | null
+    seen?: BoolFilter<"Message"> | boolean
     createdAt?: DateTimeFilter<"Message"> | Date | string
   }, "id">
 
@@ -6315,6 +6353,7 @@ export namespace Prisma {
     receiver?: SortOrder
     content?: SortOrderInput | SortOrder
     fileUrl?: SortOrderInput | SortOrder
+    seen?: SortOrder
     createdAt?: SortOrder
     _count?: MessageCountOrderByAggregateInput
     _avg?: MessageAvgOrderByAggregateInput
@@ -6332,6 +6371,7 @@ export namespace Prisma {
     receiver?: StringWithAggregatesFilter<"Message"> | string
     content?: StringNullableWithAggregatesFilter<"Message"> | string | null
     fileUrl?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    seen?: BoolWithAggregatesFilter<"Message"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
   }
 
@@ -6343,7 +6383,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -6361,7 +6401,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -6378,7 +6418,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6396,7 +6436,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6414,7 +6454,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -6429,7 +6469,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6445,7 +6485,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6631,6 +6671,7 @@ export namespace Prisma {
     receiver: string
     content?: string | null
     fileUrl?: string | null
+    seen?: boolean
     createdAt?: Date | string
   }
 
@@ -6640,6 +6681,7 @@ export namespace Prisma {
     receiver: string
     content?: string | null
     fileUrl?: string | null
+    seen?: boolean
     createdAt?: Date | string
   }
 
@@ -6648,6 +6690,7 @@ export namespace Prisma {
     receiver?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    seen?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6657,6 +6700,7 @@ export namespace Prisma {
     receiver?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    seen?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6666,6 +6710,7 @@ export namespace Prisma {
     receiver: string
     content?: string | null
     fileUrl?: string | null
+    seen?: boolean
     createdAt?: Date | string
   }
 
@@ -6674,6 +6719,7 @@ export namespace Prisma {
     receiver?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    seen?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6683,6 +6729,7 @@ export namespace Prisma {
     receiver?: StringFieldUpdateOperationsInput | string
     content?: NullableStringFieldUpdateOperationsInput | string | null
     fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    seen?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6725,6 +6772,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -6873,6 +6931,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -7030,12 +7104,18 @@ export namespace Prisma {
     user_id?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type MessageCountOrderByAggregateInput = {
     id?: SortOrder
     sender?: SortOrder
     receiver?: SortOrder
     content?: SortOrder
     fileUrl?: SortOrder
+    seen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -7049,6 +7129,7 @@ export namespace Prisma {
     receiver?: SortOrder
     content?: SortOrder
     fileUrl?: SortOrder
+    seen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -7058,11 +7139,20 @@ export namespace Prisma {
     receiver?: SortOrder
     content?: SortOrder
     fileUrl?: SortOrder
+    seen?: SortOrder
     createdAt?: SortOrder
   }
 
   export type MessageSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type TransactionCreateNestedManyWithoutUserInput = {
@@ -7099,6 +7189,14 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7205,6 +7303,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGame_transactionsInput, UserUpdateWithoutGame_transactionsInput>, UserUncheckedUpdateWithoutGame_transactionsInput>
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7242,6 +7344,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -7327,6 +7440,22 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7373,6 +7502,19 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTransactionStatusFilter<$PrismaModel>
     _max?: NestedEnumTransactionStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type TransactionCreateWithoutUserInput = {
@@ -7513,7 +7655,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -7530,7 +7672,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -7562,7 +7704,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7579,7 +7721,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7595,7 +7737,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -7612,7 +7754,7 @@ export namespace Prisma {
     password: string
     fp_id: string
     ip: string
-    balance?: number
+    balance?: Decimal | DecimalJsLike | number | string
     turn_over?: number
     invite_code?: string | null
     createdAt?: Date | string
@@ -7644,7 +7786,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7661,7 +7803,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     fp_id?: StringFieldUpdateOperationsInput | string
     ip?: StringFieldUpdateOperationsInput | string
-    balance?: IntFieldUpdateOperationsInput | number
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     turn_over?: IntFieldUpdateOperationsInput | number
     invite_code?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
